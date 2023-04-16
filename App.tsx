@@ -1,13 +1,17 @@
 import React from "react";
-import {  StyleSheet, Text, View } from "react-native";
+import {  StyleSheet, Text, View,useColorScheme } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Calculator from "./components/Calculator/Calculator";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 export default function App() {
+  const theme = useColorScheme();
+  const isDarkTheme = theme === 'dark';
+  
+  
   return (
-    <SafeAreaProvider >
+    <SafeAreaProvider style={{backgroundColor : isDarkTheme ? "black":"white"}}>
       <StatusBar />
       <Calculator />
     </SafeAreaProvider>
