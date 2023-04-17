@@ -157,6 +157,22 @@ const Calculator = () => {
     setResult(res);
   };
 
+  const getTextColor = (isOperator:boolean)=>{
+    if( isDarkTheme){
+      if(isOperator){
+        return "#5FE5EE"
+      }else {
+        return "white"
+      }
+    }else {
+      if(isOperator){
+        return "#5FE5EE"
+      }else {
+        return "black"
+      }
+    }
+  }
+
   useEffect(() => {
     if (
       !operators.includes(values[0]) &&
@@ -244,6 +260,7 @@ const Calculator = () => {
             data={numbers}
             columnWrapperStyle={{ justifyContent: "flex-start" }}
             renderItem={({ item, index }) => {
+              const isOperator = [0,1,2,3,7,11,15].includes(index)
               {
                 return (
                   <TouchableNativeFeedback
@@ -266,7 +283,7 @@ const Calculator = () => {
                       <Text
                         style={{
                           ...styles.text,
-                          color: isDarkTheme ? "white" : "black",
+                          color: getTextColor(isOperator),
                         }}
                       >
                         {item}
